@@ -116,20 +116,24 @@
     	for (var i = 0; i < numImgs; i++) {
     		var rand = randNum(25,29);
     		if (rand < 26) {
-    			position.push({"left":-1000*rand,"top":-1000*rand});
+    			position.push({"left":-3000*rand,"top":-3000*rand});
     		} else if (rand >= 26 && rand < 27) {
-    			position.push({"left":-1000*rand,"bottom":-1000*rand});
+    			position.push({"left":-3000*rand,"bottom":-3000*rand});
     		} else if (rand >= 27 && rand < 28) {
-    			position.push({"right":-1000*rand,"top":-1000*rand});
+    			position.push({"right":-3000*rand,"top":-3000*rand});
     		} else if (rand >= 28) {
-    			position.push({"right":-1000*rand,"bottom":-1000*rand});
+    			position.push({"right":-3000*rand,"bottom":-3000*rand});
     		}
     	}
     	i = 0;
     	children.each(function() {
-    		(function(cur) {
-    			cur.animate(position[i], 1800);
-    		})($(this))
+			$(this).animate(position[i], 1800)
+            .queue(function(next){
+                next()
+            }).animate({opacity:0},300)
+            .queue(function(next){
+                next();
+            });
     		i++
 			// $(this).children().animate(position, 800);
 		}) // end children.each()
