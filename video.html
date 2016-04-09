@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<header>
+		<meta charset="UTF-8">
+		<title>Hello World!</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+		<link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+		<link href="bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+		<style>
+			html {
+				font-family: 'Josefin Sans', sans-serif;
+			}
+
+			/* reference: http://jsbin.com/vuyub/4/edit?html,css,js,output */
+			.vertical-center {
+			  height:100%;
+			  width:100%;
+
+			  text-align: center;  /* align the inline(-block) elements horizontally */
+			  font: 0/0 a;         /* remove the gap between inline(-block) elements */
+			}
+
+			.vertical-center:before {    /* create a full-height inline block pseudo=element */
+			  content: ' ';
+			  display: inline-block;
+			  vertical-align: middle;  /* vertical alignment of the inline element */
+			  height: 100%;
+			}
+
+			.vertical-center > .container {
+			  max-width: 100%;
+
+			  display: inline-block;
+			  vertical-align: middle;  /* vertical alignment of the inline element */
+			  font: 16px/1 "Josefin Sans"
+			}
+
+			video {
+				max-width: 100%;
+				height: auto;
+			}
+
+			a {
+				color: black;
+
+			}
+
+		</style>
+	</header>
+	<body>
+		<div class="vertical-center">
+			<div class="container">
+				<div class="page-header">
+					<h2>I like to travel, experience new things</h2>
+				</div>
+				<div class="lead">
+					<p>And I like to condense my experience into interesting short video (I mean really short video, like 15 seconds),<br>kinda like <b>Harry Potter's moving photos</b></p>
+					<p>These are the collection of videos I pulled from my Instagram account</p>
+				</div>
+				
+				<div id="video-display"></div>
+			</div>
+		</div>
+		
+
+		<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+		<script type="text/javascript" src="js/instafeed.js"></script>
+		<script>
+		var feed = new Instafeed({
+
+			get: 'user',
+			userId: '226790177',
+			clientId: 'b691b7b2530d40e7abf39ee791cc48f2',
+			accessToken: '226790177.031041c.32ba311246e44bbdac732c01e673d616',
+			useHttp:true,
+			target: 'video-display',
+			template: '<div class="row"><div class="col-md-6"><video controls> <source src="{{image}}" type="video/mp4"></video></div></div><a href="{{link}}">see more</a>',
+			filter: function(image) {
+            	return image.type == 'video' && image.tags[0] !== "hk";
+        	}
+		});
+
+		window.onload = function() {
+			feed.run();
+		};
+
+		</script>
+
+	</body>
+	
+</html>
