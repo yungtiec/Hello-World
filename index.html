@@ -40,13 +40,13 @@
 			.links, h1 {
 				position:fixed;
 				left:50%;
-				top:45%;
+				top:32%;
 				margin-top: -50px;
-  				margin-left: -20%;
+  				margin-left: -22%;
 			}
 			@media screen and (min-width: 1200px) {
 				.links, h1 {
-		            margin-left: -16%;
+		            margin-left: -18%;
 		        }
 		        .photostack {
 					margin-left: 35%;
@@ -54,7 +54,7 @@
 	        }
 			@media screen and (max-width: 992px) {
 				.links, h1 {
-		            margin-left: -24%;
+		            margin-left: -28%;
 		        }
 		        .photostack {
 					margin-left: 25%;
@@ -62,7 +62,7 @@
 	        }
 			@media screen and (max-width: 768px) {
 				.links, h1 {
-		            margin-left: -29%;
+		            margin-left: -38%;
 		        }
 		        .photostack {
 					margin-left: 25%;
@@ -73,7 +73,7 @@
 	        }
 	        @media screen and (max-width: 390px) {
 	            .links, h1 {
-		            margin-left: -35%;
+		            margin-left: -48%;
 		        }
 		        .photostack {
 		        	margin-top: 12%;
@@ -96,10 +96,17 @@
 	        .links {
 				visibility: hidden;
 			}
+			#linkedin, #github, #videos {
+				padding-left: 2.5em;
+			}
+			p {
+				padding-left: 4.5em;
+			}
+
 		</style>
 	</header>
 	<body>
-		<h1 id="opening-message" visibility="hidden">Click anywhere to start/continue</h1>
+		<h1 id="opening-message" visibility="hidden"><center>Click anywhere to start<br> and then click on image to continue</center></h1>
 		<ul class="photostack">
 			<li><img src="imgs/1polaroidKjerag.jpg"></li>
 			<li><img src="imgs/2polaroidSemiPortrait.jpg"></li>
@@ -109,9 +116,10 @@
 			<li><img src="imgs/6polaroidFullstack.jpg"></li>			
 		</ul>
 		<div class="links">
-			<h2>Check out: </h2>
+			<h2><b>Check out: </b></h2>
 			<a href="https://www.linkedin.com/in/yung-tien-chu-53848465"><h2 id="linkedin">LinkedIn</h2></a>
-			<a href="https://github.com/yungtiec"><h2 id="github">Github<span> - I promise it'll get better :)</span></h2></a>
+			<a href="https://github.com/yungtiec"><h2 id="github">Github</h2></a><p>I promise it'll get better :) </p>
+			<a href="video.html"><h2 id="videos">Some interesting things</h2></a><p>from my instagram account</p>
 		</div>
 
 
@@ -122,7 +130,6 @@
 			$(function(){
 
 				$('#opening-message').show(200);
-
 				$('.photostack').makePhotostack().scatterPhoto()
 				$(window).click(function(e) {
 					$('#opening-message').hide();
@@ -134,7 +141,6 @@
 						$('.links').css('visibility','visible');
 					});
 					// show link
-
 				})
 					
 			})
