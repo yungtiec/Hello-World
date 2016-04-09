@@ -82,8 +82,8 @@
     	return $(this);
     }
 
-   	var sequence = 0;
-    $.fn.animateIn = function() {
+    var sequence = 0;
+    $.fn.animateIn = function(opt) {
     	var position = {top:0,left:0};
     	var next = "#" + sequence;
     	var prev = "#" + (sequence-1);
@@ -100,6 +100,7 @@
         });
 		sequence++;
     }
+
 
     // return the top most image
     $.fn.topMostImg = function() {
